@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import MainSlider from './component/MainSlider';
 
 const DB = [
   {
@@ -41,38 +42,43 @@ function App() {
   const [TG, setTG] = useState(false);
 
   return (
-    <header>
-      <h1 className={CC} onClick={() => setCC('on')}>LOGO</h1>
-      <h2 className={`ggg ${TG ? 'ox' : ''}`}>Toggle Class</h2>
+    <div className='Wrap'>
+      <header>
+        <h1 className={CC} onClick={() => setCC('on')}>LOGO</h1>
+        <h2 className={`ggg ${TG ? 'ox' : ''}`}>Toggle Class</h2>
 
-      {/* <button onClick={() => setCC('on')}>class add</button> */}
-      <button onClick={() => setTG(!TG)}>class toggle</button>
+        {/* <button onClick={() => setCC('on')}>class add</button> */}
+        <button onClick={() => setTG(!TG)}>class toggle</button>
 
-      <nav className='GNB'>
-        <ul>
-          {
-            DB.map((it, idx) => (<li key={idx}>
-              <a href="">{it.content}</a>
+        <nav className='GNB'>
+          <ul>
+            {
+              DB.map((it, idx) => (<li key={idx}>
+                <a href="">{it.content}</a>
 
-              <ul className='smenu'>
-                {
-                  it.submenu.map((smenu, idx) =>
-                    <li key={idx}>
-                      <a href={smenu.link}>{smenu.content}</a>
-                    </li>)
-                }
+                <ul className='smenu'>
+                  {
+                    it.submenu.map((smenu, idx) =>
+                      <li key={idx}>
+                        <a href={smenu.link}>{smenu.content}</a>
+                      </li>)
+                  }
 
-                {/* <li>
+                  {/* <li>
                 <a href=''>{it.submenu[0].content}</a>
               </li> */}
-              </ul>
-            </li>))
-          }
+                </ul>
+              </li>))
+            }
 
-          {/* <li>{DB[0].name}</li> */}
-        </ul>
-      </nav>
-    </header>
+            {/* <li>{DB[0].name}</li> */}
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <MainSlider />
+      </main>
+    </div>
   );
 }
 
